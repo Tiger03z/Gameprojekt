@@ -1,0 +1,5 @@
+gamekeys = {
+    "1": False,
+    "2": False,
+    "3": False
+}
