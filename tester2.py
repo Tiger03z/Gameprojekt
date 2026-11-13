@@ -13,12 +13,17 @@ def meny(valg):
                 print(f"> {tekst} <")
             else:
                 print(f"  {tekst}")
-                
+
         tast = les_tast()
         if tast == "opp":
             valgt = (valgt - 1) % len(valg)
         elif tast == "ned":
             valgt = (valgt + 1) % len(valg)
+        elif tast == "høyre":
+            valgt = (valgt - 1) % len(valg)
+        elif tast == "venstre":
+            valgt = (valgt + 1) % len(valg)
+        
         elif tast == "enter":
             return valg[valgt]
 print("\033[?25l", end="", flush=True)
