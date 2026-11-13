@@ -1,3 +1,4 @@
+import shutil
 from taster import les_tast
 
 def tøm_skjerm():
@@ -5,6 +6,11 @@ def tøm_skjerm():
 
 def tegn_grid(grid, x, y):
     tøm_skjerm()
+    bredde, høyde = shutil.get_terminal_size()
+
+    # Tomme linjer over, så menyen havner midt på i høyden
+    print("\n" * max(0, (høyde - len(grid)) // 2), end="")
+
     for rad in range(len(grid)):
         linje = ""
         for kolonne in range(len(grid[rad])):
@@ -13,7 +19,8 @@ def tegn_grid(grid, x, y):
                 linje += f"[{ord:^9}]"
             else:
                 linje += f" {ord:^9} "
-        print(linje)
+        # Mellomrom foran, så linja havner midt på i bredden
+        print(linje.center(bredde).rstrip())
 
 def velg(grid):
     høyde = len(grid)
