@@ -1,13 +1,21 @@
 import os
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+import sys
+import subprocess
 
-import sys, subprocess
+MAPPE = os.path.dirname(os.path.abspath(__file__))
+
+
 
 def spill_lyd(fil):
+    sti = os.path.join(MAPPE, "lyder", fil)
     if sys.platform == "win32":
         import winsound
-        winsound.PlaySound(fil, winsound.SND_FILENAME | winsound.SND_ASYNC)
+        winsound.PlaySound(sti, winsound.SND_FILENAME | winsound.SND_ASYNC)
     else:
-        subprocess.Popen(["afplay", fil])
+        subprocess.Popen(["afplay", sti])
 
-spill_lyd("smile.wav")
+
+if __name__ == "__main__":
+    import time
+    spill_lyd("smile.wav")
+    time.sleep(3)
